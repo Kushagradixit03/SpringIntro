@@ -1,13 +1,10 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hello")
-public class SayHello {
+public class SayHellopara {
     //curl localHost:8080/hello-w "\n"
     @RequestMapping(value = {"","/","/home"})
     public String sayHello(){
@@ -18,6 +15,12 @@ public class SayHello {
     @RequestMapping(value = {"/query"},method = RequestMethod.GET)
         public  String SayHello(@RequestParam(value = "name")String name) {
         return "Hello " + name + "!";
+    }
+
+    //curl localhost:8080/hello/param/Kushagra -w "\n"
+    @GetMapping("/param/{name}")
+    public String sayHelloParam(@PathVariable String name){
+        return  "Hello " + name + "!";
     }
 
 
